@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import Menu from './Menu'
+import Weather from './Weather'
+
 export default class App extends Component{
     constructor() {
         super()
@@ -16,38 +19,10 @@ export default class App extends Component{
     }
 
     render() {
-
-        const list = this.state.list.map((obj) => {
-            return (
-                <div key={ obj.id }>
-                    { obj.city }
-                    { obj.temperature }
-                    { obj.rainProbability }
-                    { obj.weather }
-                    <img src={obj.weatherImg} alt="" />
-                </div>
-            )
-        })
-
-        let buttonNames = ['今日白天', '今晚明晨', '明日白天']
-
-        const hours = new Date().getHours()
-
-        if (hours >= 18 || hours <= 6) {
-            buttonNames = ['今晚明晨', '明日白天', '明日晚上']
-        }
-
-        const buttons = buttonNames.map((name, idx) => {
-            return (
-                <button onClick={ () => this.handleClick( idx+1 ) }>{ name }</button>
-            )
-        })
-
-
         return (
             <div>
-                { buttons }
-                { list }
+                <Menu handleClick={ this.handleClick }/>
+                { this.state.list.map((item) => <Weather item={item} />) }
             </div>
         )
     }

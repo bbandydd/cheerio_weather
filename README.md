@@ -1,5 +1,11 @@
 # cheerio_weather
 
+- 以cheerio實作氣象預報爬蟲
+
+- Backend: NodeJS (API)
+
+- Frontend: ReactJS (View)
+
 ## install
 
 ```

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Menu = ({ names, handleClick }) => {
+const Menu = ({ names, getWeather }) => {
 
     let buttonNames = ['今日白天', '今晚明晨', '明日白天']
 
@@ -14,7 +14,7 @@ const Menu = ({ names, handleClick }) => {
         <div>
             {
                 buttonNames.map((name, idx) =>
-                    <button key={ idx } onClick={ () => handleClick( idx+1 ) }>{ name }</button>)
+                    <button key={ idx } onClick={ () => getWeather( idx+1 ) }>{ name }</button>)
             }
         </div>
     )

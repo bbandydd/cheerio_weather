@@ -8,31 +8,26 @@ export default class App extends Component{
     constructor() {
         super()
         this.getWeather = this.getWeather.bind(this)
-        this.handleClick = this.handleClick.bind(this)
         this.state = {
             list: []
         }
     }
 
     componentDidMount() {
-        this.getWeather('/getWeather/1')
+        this.getWeather(1)
     }
 
     render() {
         return (
             <div>
-                <Menu handleClick={ this.handleClick }/>
-                { this.state.list.map((item) => <Weather item={item} />) }
+                <Menu getWeather={ this.getWeather }/>
+                { this.state.list.map((item, idx) => <Weather key={'weather-' + idx} item={item} />) }
             </div>
         )
     }
 
-    handleClick(status) {
-        this.getWeather('/getWeather/' + status)
-    }
-
-    getWeather(url) {
-        axios.get(url)
+    getWeather(status) {
+        axios.get('/getWeather/' + status)
             .then((response) => {
                 this.setState({
                     list: response.data

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Weather = ({ item }) => {
     return (
-        <div key={ item.id }>
+        <div>
             { item.city }
             { item.temperature }
             { item.rainProbability }

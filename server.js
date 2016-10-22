@@ -18,8 +18,8 @@ app.use(require('webpack-hot-middleware')(compiler))
 app.get('/getWeather/:status', require('./api/weather'))
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+  res.sendFile(path.join(__dirname, 'index.html'))
+})
 
 // run server
 app.listen(3000, 'localhost', function(err) {

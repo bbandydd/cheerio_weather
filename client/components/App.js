@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import Menu from './Menu'
-import Weather from './Weather'
+import WeatherTable from './WeatherTable'
 
 export default class App extends Component{
     constructor() {
         super()
         this.getWeather = this.getWeather.bind(this)
+        this.setStatus = this.setStatus.bind(this)
         this.state = {
+            status: 1,
             list: []
         }
     }
@@ -20,8 +22,12 @@ export default class App extends Component{
     render() {
         return (
             <div>
-                <Menu getWeather={ this.getWeather }/>
-                { this.state.list.map((item, idx) => <Weather key={'weather-' + idx} item={item} />) }
+                <Menu 
+                    status={ this.state.status } 
+                    getWeather={ this.getWeather } 
+                    setStatus = { this.setStatus }
+                />
+                <WeatherTable items={ this.state.list } />
             </div>
         )
     }
@@ -38,5 +44,11 @@ export default class App extends Component{
             .catch((err) => {
                 console.log(err)
             })
+    }
+
+    setStatus(status) {
+        this.setState({
+            status
+        })
     }
 }

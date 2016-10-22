@@ -10,6 +10,10 @@
 
 ```
 npm install
+
+or
+
+yarn
 ```
 
 ## run

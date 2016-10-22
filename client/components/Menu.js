@@ -3,18 +3,23 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const Menu = ({ status, getWeather, setStatus }) => {
     const style = {
-        'margin': '12px'
+        container: {
+            'textAlign': 'center'
+        },
+        button: {
+            'margin': '12px'
+        }
     };
 
     return (
-        <div>
+        <div style={style.container}>
             {
                 getButtonNames().map((name, idx) =>
                     <RaisedButton 
                         key={ idx } 
                         label={name} 
                         primary={status == idx+1 ? true : false} 
-                        style={style}
+                        style={style.button}
                         onTouchTap={ () => { getWeather(idx+1); setStatus(idx+1) } }
                     />
                 )
